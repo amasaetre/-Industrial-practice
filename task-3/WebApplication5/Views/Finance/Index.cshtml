@@ -1,0 +1,47 @@
+@model FinanceApp.Models.FinanceViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Финансовая информация</h2>
+<p>Доходы: @Model.TotalIncome</p>
+<p>Расходы: @Model.TotalExpenses</p>
+<p>Баланс: @Model.Balance</p>
+
+<h3>Доходы</h3>
+<table class="table">
+    <tr>
+        <th>Источник</th>
+        <th>Сумма</th>
+        <th>Дата</th>
+    </tr>
+    @foreach (var income in Model.Incomes)
+    {
+        <tr>
+            <td>@income.Source</td>
+            <td>@income.Amount</td>
+            <td>@income.Date</td>
+        </tr>
+    }
+</table>
+
+<h3>Расходы</h3>
+<table class="table">
+    <tr>
+        <th>Категория</th>
+        <th>Сумма</th>
+        <th>Дата</th>
+    </tr>
+    @foreach (var expense in Model.Expenses)
+    {
+        <tr>
+            <td>@expense.Category</td>
+            <td>@expense.Amount</td>
+            <td>@expense.Date</td>
+        </tr>
+    }
+</table>
+
+<a href="@Url.Action("AddIncome", "Finance")">Добавить доход</a> |
+<a href="@Url.Action("AddExpense", "Finance")">Добавить расход</a>

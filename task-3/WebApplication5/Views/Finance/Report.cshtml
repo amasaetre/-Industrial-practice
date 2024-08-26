@@ -1,0 +1,10 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Отчеты</h2>
+<p>Доходы: @ViewBag.TotalIncome</p>
+<p>Расходы: @ViewBag.TotalExpenses</p>
+<p>Баланс: @ViewBag.Balance</p>
+
+<a href="@Url.Action("Index", "Finance")">Назад</a>
